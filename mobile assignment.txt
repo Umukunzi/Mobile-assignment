@@ -1,0 +1,63 @@
+1.import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import HomeScreen from './src/screens/home';
+import MyVideoScreen from './src/screens/myvideo';
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused ? 'home' : 'home';
+              color = focused ? 'tomato' : 'grey';
+              size = focused ? 25 : 20;
+            } else if (route.name === 'YouTube_Videos') {
+              iconName = focused ? 'youtube' : 'youtube';
+              color = focused ? 'tomato' : 'grey';
+              size = focused ? 25 : 20;
+            }
+
+            return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+          }
+        })}
+      >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="YouTube_Videos" component={MyVideoScreen} />
+        
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
+2.import React from 'react';
+import { StyledMenu } from './Menu.styled';
+
+const Menu = () => {
+  return (
+    <StyledMenu>
+      <a href="/">
+        <span role="img" aria-label="about us"></span>
+        About us
+      </a>
+      <a href="/">
+        <span role="img" aria-label="price"></span>
+        Pricing
+        </a>
+      <a href="/">
+        <span role="img" aria-label="contact"></span>
+        Contact
+        </a>
+    </StyledMenu>
+  )
+}
+export default Menu;

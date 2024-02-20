@@ -1,3 +1,5 @@
+Name:Umukunzi Merveille Tuza
+ID:22009
 import RNSharedPreferences from 'react-native-android-shared-preferences';
 
 var sharedPreferences = RNSharedPreferences.getSharedPreferences("user");

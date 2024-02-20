@@ -1,3 +1,6 @@
+Name:Umukunzi Merveille Tuza
+ID:22009
+
 1.import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';

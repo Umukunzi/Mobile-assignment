@@ -1,0 +1,31 @@
+useEffect(() => {
+    requestPermission();
+  }, []);
+
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!granted) alert("enable permission");
+  };
+
+  const handlePress = () => {
+    selectImage();
+
+  };
+const selectImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        quality: 0.5,
+      });
+      if (!result.cancelled) setImageUri(result.uri);
+
+      console.log("result from Picker: ", result);
+      console.log("user: ", user);
+      user.image = result;
+      const response = await usersApi.storeProfPix(user);
+      console.log("response from backend", response);
+    } catch (error) {
+      console.log("Error reading an image", error);
+    }
+  };
